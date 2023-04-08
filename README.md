@@ -1,6 +1,10 @@
 # DSL-23-1-modeling--Img2Music-Music-Recommendation-System-based-on-sentiment-analysis-
+감정 기반 이미지-음악 추천시스템 
 
-## E = MusiC^2 : 8기 유채원 장준혁 최윤서 9기 김서진 서연우 
+## 모델링 E조
+*팀명* : E = MusiC^2
+*팀원* : 8기 유채원 장준혁 최윤서 9기 김서진 서연우 
+
 ## Files
 - MAIN
 - data
@@ -17,14 +21,16 @@
 ### 0. Task
 - [Presentation pdf]()
 - [Presentation Youtube]()
-- 영상 안의 다양한 이미지에 어울리는 음악을 추천하고자 함.
+- 영상 안의 다양한 이미지에 어울리는 음악을 추천.
 - Ekman's 6 feelings 에 기반한 Valence, Arousal 지표를 통해 이미지와 음악의 감성을 분석, image 2 music recommendation을 구현하고자 함. 
+<img width="1209" alt="스크린샷 2023-04-08 오후 11 43 39" src="https://user-images.githubusercontent.com/116076204/230727394-5f8dc90c-c413-4d0d-8dca-ef8e03b7726e.png">
 
 ### 1. Data
 - [OASIS](https://db.tt/yYTZYCga) (Open Affective Standardized Image Set) : 900개의 이미지에 대해 274명의 사람이 valence, arousal을 평가
 - [Spotify API](https://developer.spotify.com/documentation/web-api) : Spotify data 크롤링을 통해 아티스트, 앨범, 곡명 및 valence, arousal을 포함한 음악의 정량적 지표를 수집
 - [Musixmatch API](https://developer.musixmatch.com/) : Spotify API 기반으로 크롤링한 곡들의 가사를 수집
 - [NRC VAD Lexicon](https://saifmohammad.com/WebPages/nrc-vad.html) : 캐나다 NRC 제작, 약 2만 여개의 단어에 대해 Valence, Arousal, Dominance 정보를 담고 있음.
+- data 폴더 참조
 
 ### 2. Model
 - Overview
@@ -43,12 +49,16 @@
     - Lyric Embedding : Word2Vec + Weighted sum based on counts (NRC VAD Lexicon)
         - Used pretrained model(fse/word2vec-google-news-300(Hugging Face)) -> fine tuning -> PCA
     - AutoML : chose best 3 model and stacked them to make new model
-        - Valence : 
+        - Valence model : Gradient Boost Regressor + Random Forest Regressor + Extra Trees Regressor
+            - Input : music + lyric embedding PCA + lyric VA
+        - Arousal model: Gradient Boost Regressor + Random Forest Regressor + LGBM Regressor
+            - Input : music + lyric VA
 - [Image2Music](github link)
     - Used Euclidean distance as similarity measure(with sklearn)
 
 ### 3. Result
-- End-to-end simulation code(img_test_generation.ipynb) 
+- End-to-end simulation code(img_test_generation.ipynb)
+    - 
 - result image
     <img width="1089" alt="스크린샷 2023-04-08 오후 11 26 10" src="https://user-images.githubusercontent.com/116076204/230726493-26d492c5-b6b9-4346-a624-0a9356fb6d4c.png">
 
