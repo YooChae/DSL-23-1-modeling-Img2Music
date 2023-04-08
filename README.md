@@ -57,8 +57,8 @@
     - Used Euclidean distance as similarity measure(with sklearn)
 
 ### 3. Result
+
 - End-to-end simulation code(img_test_generation.ipynb)
-    - 
 - result image
     <img width="1089" alt="스크린샷 2023-04-08 오후 11 26 10" src="https://user-images.githubusercontent.com/116076204/230726493-26d492c5-b6b9-4346-a624-0a9356fb6d4c.png">
 
