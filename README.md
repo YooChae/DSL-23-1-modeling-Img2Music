@@ -1,13 +1,8 @@
 # DSL-23-1-modeling--Img2Music-Music-Recommendation-System-based-on-sentiment-analysis-
 
-# 23-1 DSL Modeling Project 
-# Img2Music : Music Recommendation System based on sentiment analysis
-
 ## E = MusiC^2
 ### 8기 유채원 장준혁 최윤서 9기 김서진 서연우 
----
 ## Files
----
 - MAIN
 - data
 - model
@@ -18,10 +13,8 @@
         - utils.py : define functions for minor changes or transformations
     - Music2Emotion
     - Img2Music
-- images_for_README
-
-## More Explanations
 ---
+## More Explanations
 ### 0. Task
 - [Presentation pdf]()
 - [Presentation Youtube]()
@@ -35,11 +28,12 @@
 - [NRC VAD Lexicon](https://saifmohammad.com/WebPages/nrc-vad.html) : 캐나다 NRC 제작, 약 2만 여개의 단어에 대해 Valence, Arousal, Dominance 정보를 담고 있음.
 
 ### 2. Model
-- Overview(image_github link)
-    - ![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+- Overview
+    - <img width="1209" alt="스크린샷 2023-04-08 오후 11 24 05" src="https://user-images.githubusercontent.com/116076204/230726382-5d9df99f-01f3-48bc-9e87-f23065e95485.png">
+
 - [Image2Emotion](github link) : pretrained CNN model을 feature extractor로 사용해 valence, arousal 지표를 예측하도록 함
     - model
-        - ![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+    <img width="755" alt="스크린샷 2023-04-08 오후 11 24 50" src="https://user-images.githubusercontent.com/116076204/230726422-21b1e00c-d442-4957-ae42-a6be68a8598e.png">
     - Feature extractor : VGG19_bn
     - Classifier : Linear layer
     - Loss : MSE loss (valence + arousal)
@@ -57,7 +51,7 @@
 ### 3. Result
 - End-to-end simulation code(img_test_generation.ipynb) 
 - result image
-    - ![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+    <img width="1089" alt="스크린샷 2023-04-08 오후 11 26 10" src="https://user-images.githubusercontent.com/116076204/230726493-26d492c5-b6b9-4346-a624-0a9356fb6d4c.png">
 
 ### 4. References
 1. Matt McVicar, Bruno Di Giorgi, Baris Dundar, and Matthias Mauch. (2021). Lyric document embeddings for music tagging
