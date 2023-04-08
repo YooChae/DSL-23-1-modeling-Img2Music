@@ -1,7 +1,6 @@
 # DSL-23-1-modeling--Img2Music-Music-Recommendation-System-based-on-sentiment-analysis-
 
-## E = MusiC^2
-### 8기 유채원 장준혁 최윤서 9기 김서진 서연우 
+## E = MusiC^2 : 8기 유채원 장준혁 최윤서 9기 김서진 서연우 
 ## Files
 - MAIN
 - data
@@ -32,11 +31,11 @@
     - <img width="1209" alt="스크린샷 2023-04-08 오후 11 24 05" src="https://user-images.githubusercontent.com/116076204/230726382-5d9df99f-01f3-48bc-9e87-f23065e95485.png">
 
 - [Image2Emotion](github link) : pretrained CNN model을 feature extractor로 사용해 valence, arousal 지표를 예측하도록 함
-    - model
     <img width="755" alt="스크린샷 2023-04-08 오후 11 24 50" src="https://user-images.githubusercontent.com/116076204/230726422-21b1e00c-d442-4957-ae42-a6be68a8598e.png">
-    - Feature extractor : VGG19_bn
-    - Classifier : Linear layer
-    - Loss : MSE loss (valence + arousal)
+    - model
+        - Feature extractor : VGG19_bn
+        - Classifier : Linear layer
+        - Loss : MSE loss (valence + arousal)
 - [Music2Emotion](github link)
     - Regression task to predict VA with Spotify data's columns
         - Used 8 features(danceability, key, loudness, mode, speechiness, instrumentalness, liveness, tempo)
