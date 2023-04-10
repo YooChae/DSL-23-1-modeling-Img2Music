@@ -6,16 +6,37 @@
 - **팀원** : 8기 유채원 장준혁 최윤서 9기 김서진 서연우 
 
 ## Files
-- MAIN
-- data
-- model
-    - Img2Emotion
-        - dataset.py : get data and transform it into runnable format
-        - run.py : python file to receive arguments and run exp.py file
-        - exp.py : python file actually run to train
-        - utils.py : define functions for minor changes or transformations
-    - Music2Emotion
-    - Img2Music
+- image_to_music.py : final end-to-end file to get the result
+- image_to_music_module.py : modules used in image_to_music.py
+- image_to_sentiment
+    - data
+        - OASIS_with_minmaxscaling.csv
+    - dataset.py : get data and transform it into runnable format
+    - run.py : python file to receive arguments and run exp.py file
+    - exp.py : python file actually run to train
+    - utils.py : define functions for minor changes or transformations
+    - vgg.sh : pretrained VGG19_bn model
+- music_to_sentiment
+    - arousal_valence_prediction.py : file to get music's sentiment
+    - data
+        - NRC-VAD-Lexicon.txt
+        - da
+        - song_lyric.csv
+        - song_lyric_VA.csv
+        - song_lyric_embedding_300.csv
+        - song_lyric_embedding_pca_11.csv
+        - song_music_8_characteristics.csv
+        - song_normalized_VA_label.csv
+    - preprocess : preprocessing modules for VA model
+        - api_module.py
+        - da
+        - lyric_VA.py
+        - lyrics_to_vector.py
+        - music_preprocessing.py
+        - music_to_csv.py
+        - preprocess_module.py
+    - result
+        - arousal.pkl
 ---
 ## More Explanations
 ### 0. Task
@@ -30,19 +51,18 @@
 - [Spotify API](https://developer.spotify.com/documentation/web-api) : Spotify data 크롤링을 통해 아티스트, 앨범, 곡명 및 valence, arousal을 포함한 음악의 정량적 지표를 수집
 - [Musixmatch API](https://developer.musixmatch.com/) : Spotify API 기반으로 크롤링한 곡들의 가사를 수집
 - [NRC VAD Lexicon](https://saifmohammad.com/WebPages/nrc-vad.html) : 캐나다 NRC 제작, 약 2만 여개의 단어에 대해 Valence, Arousal, Dominance 정보를 담고 있음.
-- data 폴더 참조
 
 ### 2. Model
 - Overview
     - <img width="1209" alt="스크린샷 2023-04-08 오후 11 24 05" src="https://user-images.githubusercontent.com/116076204/230726382-5d9df99f-01f3-48bc-9e87-f23065e95485.png">
 
-- [Image2Emotion](github link) : pretrained CNN model을 feature extractor로 사용해 valence, arousal 지표를 예측하도록 함
+- [Image2Emotion](./github/DSL-23-1-modeling-Img2Music/image_to_sentiment) : pretrained CNN model을 feature extractor로 사용해 valence, arousal 지표를 예측하도록 함
     <img width="755" alt="스크린샷 2023-04-08 오후 11 24 50" src="https://user-images.githubusercontent.com/116076204/230726422-21b1e00c-d442-4957-ae42-a6be68a8598e.png">
     - model
         - Feature extractor : VGG19_bn
         - Classifier : Linear layer
         - Loss : MSE loss (valence + arousal)
-- [Music2Emotion](github link)
+- [Music2Emotion](./github/DSL-23-1-modeling-Img2Music/music_to_sentiment)
     - Regression task to predict VA with Spotify data's columns
         - Used 8 features(danceability, key, loudness, mode, speechiness, instrumentalness, liveness, tempo)
         - Preprocessed with log normalization and min-max scaling
@@ -53,12 +73,12 @@
             - Input : music + lyric embedding PCA + lyric VA
         - Arousal model: Gradient Boost Regressor + Random Forest Regressor + LGBM Regressor
             - Input : music + lyric VA
-- [Image2Music](github link)
+- [Image2Music](./github/DSL-23-1-modeling-Img2Music/image_to_music.py)
     - Used Euclidean distance as similarity measure(with sklearn)
 
 ### 3. Result
 
-- End-to-end simulation code(img_test_generation.ipynb)
+- End-to-end simulation code(image_to_music.py)
 - result image
     <img width="1089" alt="스크린샷 2023-04-08 오후 11 26 10" src="https://user-images.githubusercontent.com/116076204/230726493-26d492c5-b6b9-4346-a624-0a9356fb6d4c.png">
 
